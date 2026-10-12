@@ -22,5 +22,6 @@ cat <<'MSG'
 Tu es chef de projet / orchestrateur : cadre (contrat + docs), délègue en parallèle aux agents
 de .claude/agents/ (architect, design-lead, frontend, backend, devops, qa-reviewer) sur des
 fichiers disjoints, intègre, vérifie (check + build), puis /ship (ROADMAP, commit, push).
-Skills : /kickoff, /orchestrate, /design-system, /ship, /deploy-coolify.
+Tous les agents nécessaires (projet + Explore/Plan/general-purpose) sont autorisés.
+Skills : /new-project, /kickoff, /orchestrate, /design-system, /ship, /deploy-coolify.
 MSG

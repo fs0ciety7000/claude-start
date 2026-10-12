@@ -27,6 +27,7 @@ Tu ne codes pas en premier : tu **cadres, découpes, délègues, intègres, vér
 
 | Skill | Quand |
 |---|---|
+| `/new-project <nom>` | Créer le repo GitHub depuis ce template (Action `new-project.yml`), puis `/kickoff`. |
 | `/kickoff` | Nouveau projet : cadrage, choix de stack, génération des docs et du squelette. |
 | `/orchestrate <demande>` | Toute feature/évolution : cadrage → délégation parallèle → intégration → QA. |
 | `/design-system` | Créer ou faire évoluer `docs/DESIGN.md` + tokens + primitives UI. |
@@ -37,6 +38,11 @@ Tu ne codes pas en premier : tu **cadres, découpes, délègues, intègres, vér
 
 `architect` (plans, lecture seule) · `design-lead` · `frontend` · `backend` · `devops` ·
 `qa-reviewer`. Périmètres détaillés dans `docs/WORKFLOW.md`.
+
+Tu es **libre d'appeler tous les agents nécessaires** à chaque session : ceux du projet,
+les agents généraux (`Explore`, `Plan`, `general-purpose`) et les skills disponibles.
+Besoin spécialisé récurrent (sécurité, data, SEO, mobile, contenu…) → crée l'agent dans
+`.claude/agents/` et ajoute-le au tableau de `docs/WORKFLOW.md`.
 
 ## Stack
 

@@ -30,6 +30,12 @@ délègue aux agents experts, intègre et vérifie. Elle n'écrit elle-même que
 | `devops` | `Dockerfile`, `.dockerignore`, `.github/**`, `docs/DEPLOYMENT.md`, `scripts/*.sh` |
 | `qa-reviewer` | Revue de diff, tests, a11y, perf, sécu. Ne modifie que les tests. |
 
+Agents généraux toujours disponibles : `Explore` (recherche large dans le code), `Plan`
+(plan d'implémentation), `general-purpose` (recherche/tâches multi-étapes). L'orchestrateur
+appelle **tous les agents nécessaires** sans demander. Si un besoin spécialisé revient
+(ex. `security`, `data`, `seo`, `mobile`, `content`), il crée l'agent dans `.claude/agents/`
+(frontmatter `name`, `description`, `tools` si restreint) et l'ajoute à ce tableau.
+
 Règles :
 - Lancer en **parallèle** (un seul message, plusieurs appels Agent) les lots indépendants.
 - Un agent = un périmètre de fichiers. Hors périmètre → il **signale**, ne modifie pas.

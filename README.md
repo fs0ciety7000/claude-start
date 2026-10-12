@@ -20,19 +20,29 @@ docs/
   settings.json               Permissions (allow/ask/deny) + hook SessionStart
   hooks/session-start.sh      Installe les deps + rappelle le protocole
   agents/                     architect · design-lead · frontend · backend · devops · qa-reviewer
-  skills/                     kickoff · orchestrate · design-system · ship · deploy-coolify
+  skills/                     new-project · kickoff · orchestrate · design-system · ship · deploy-coolify
 .github/pull_request_template.md
+.github/workflows/new-project.yml   Action de création de repo (template uniquement)
 .env.example · .gitignore
 ```
 
 ## Utilisation
 
+### Réglage unique (2 min)
+1. Créer un token **fine-grained** (github.com/settings/personal-access-tokens/new) :
+   propriétaire `fs0ciety7000`, *Repository access* = **All repositories**, permissions
+   **Administration : Read and write** et **Contents : Read-only**.
+2. L'enregistrer ici : Settings › Secrets and variables › Actions › **New repository
+   secret** → nom `REPO_CREATOR_TOKEN`.
+3. App Claude sur **All repositories** (github.com/apps/claude › Configure), pour que
+   Claude accède aux repos qu'il crée.
+
 ### Nouveau projet
-1. Sur GitHub : **Use this template** (activer *Template repository* dans les Settings de
-   ce repo) → nouveau repo.
-2. Ouvrir une session Claude Code sur ce repo et dire « kickoff » (ou `/kickoff`).
-   Claude pose quelques questions, remplit `CLAUDE.md` + `docs/`, puis orchestre le
-   squelette, le design system et l'infra.
+Dans une session du Projet claude.ai : « **nouveau projet : mon-app** ». Claude déclenche
+l'Action **Nouveau projet** (`.github/workflows/new-project.yml`), qui crée
+`fs0ciety7000/mon-app` depuis ce template ; il l'ajoute à la session puis lance `/kickoff`
+(questions de cadrage, docs, squelette, design system, infra).
+Sans Claude : onglet Actions › Nouveau projet › Run workflow, ou bouton **Use this template**.
 
 ### Projet existant
 Copier `CLAUDE.md`, `docs/WORKFLOW.md`, `.claude/` dans le repo, puis `/kickoff`
@@ -47,6 +57,7 @@ Copier `CLAUDE.md`, `docs/WORKFLOW.md`, `.claude/` dans le repo, puis `/kickoff`
 
 | Skill | Rôle |
 |---|---|
+| `/new-project <nom>` | Crée le repo depuis le template via l'Action, puis `/kickoff` |
 | `/kickoff` | Cadrage, stack, docs, squelette, design system, infra |
 | `/orchestrate <demande>` | Livraison d'une feature via les agents en parallèle |
 | `/design-system` | DESIGN.md + tokens + primitives + page `/design` |
