@@ -13,6 +13,11 @@ délègue aux agents experts, intègre et vérifie. Elle n'écrit elle-même que
 
 ## 2. Cadrage (orchestrateur)
 
+- **Références** : si la demande touche un projet lié (§0 d'ARCHITECTURE, ou cité par
+  l'utilisateur), l'ajouter à la session en lecture (`add_repo`) et le donner en contexte
+  aux agents concernés (design, contrat, infra à réutiliser). Une session précédente peut
+  aussi servir de référence (`list_sessions` / `list_events`).
+
 - Mettre à jour le **contrat** (types partagés + section API de `docs/ARCHITECTURE.md`)
   avant toute délégation : c'est l'interface entre agents.
 - Si l'UI change : s'assurer que `docs/DESIGN.md` couvre le besoin (sinon `design-lead` d'abord).
@@ -20,6 +25,9 @@ délègue aux agents experts, intègre et vérifie. Elle n'écrit elle-même que
 - Demande ambiguë ou structurante → plan par `architect`, validé avant d'exécuter.
 
 ## 3. Délégation aux agents experts
+
+Chemins indicatifs (exemple Next.js) : les vrais dossiers de chaque agent sont ceux de
+`docs/ARCHITECTURE.md` §6, selon la stack choisie.
 
 | Agent | Périmètre (fichiers possédés) |
 |---|---|

@@ -1,7 +1,15 @@
 # ARCHITECTURE
 
 > Rempli par `/kickoff`, maintenu par l'orchestrateur et `architect`.
+> **Aucune stack n'est imposée** : `architect` la choisit selon le besoin et la justifie ici.
+> Les exemples entre `{{…}}` ne sont que des pistes.
 > **Le contrat (§3) est modifié AVANT toute implémentation.**
+
+## 0. Projets liés / références
+
+| Repo / session | Ce qu'on en reprend | Lien |
+|---|---|---|
+| {{fs0ciety7000/<repo>}} | {{design system / contrat d'API / infra / rien qu'en lecture}} | |
 
 ## 1. Vue d'ensemble
 
@@ -9,16 +17,25 @@
 
 ## 2. Stack
 
-| Couche | Choix | Pourquoi |
+| Couche | Choix | Pourquoi (et alternatives écartées) |
 |---|---|---|
-| Framework | {{Next.js App Router, output standalone}} | |
-| Langage | {{TypeScript strict}} | |
-| Styles | {{Tailwind v4, tokens @theme}} | |
-| Motion | {{GSAP + Motion + Lenis}} | |
-| Validation | {{zod}} | |
-| Données | {{aucune BDD / Supabase / Postgres…}} | |
-| Tests | {{Vitest + Playwright}} | |
-| Lint/format | {{Biome}} | |
+| Langage / runtime | {{TypeScript·Node / Go / Python / Rust…}} | |
+| Framework | {{Next.js / Astro / Go net/http·chi / FastAPI / aucun…}} | |
+| UI / styles | {{Tailwind + tokens / CSS natif / aucun (API, CLI)}} | |
+| Motion | {{GSAP / Motion / CSS / aucun}} | |
+| Données | {{aucune / fichiers / SQLite / Postgres / Supabase…}} | |
+| Validation | {{zod / pydantic / validator…}} | |
+| Tests | {{Vitest / go test / pytest… + Playwright si UI}} | |
+| Lint / format | {{Biome / golangci-lint·gofmt / ruff…}} | |
+
+Critères de choix : adéquation au besoin, perf, simplicité de déploiement (une image
+Docker), maturité, cohérence avec les projets liés (§0), maîtrise des agents.
+
+Pistes par type de projet (indicatives) :
+- Site / app web riche → Next.js ou Astro (+ Tailwind, GSAP/Motion).
+- API / service / worker performant → Go (ou Rust si contrainte forte).
+- Data / IA / scripts → Python (FastAPI, uv).
+- CLI → Go ou TypeScript selon l'écosystème.
 
 ## 3. Contrat d'API (source de vérité : `{{src/lib/types.ts}}`)
 
@@ -40,12 +57,11 @@ validation zod de toute entrée externe.
 
 ## 6. Arborescence
 
+{{Selon la stack. Indiquer pour chaque agent ses dossiers (le tableau de périmètres de
+docs/WORKFLOW.md s'y réfère). Exemple Next.js : src/app, src/components/ui, src/lib.
+Exemple Go : cmd/, internal/, web/.}}
+
 ```
-src/app/            pages + route handlers
-src/components/ui/  primitives du design system
-src/components/     sections / composants métier
-src/lib/            logique, clients, types partagés
-scripts/            CLI et scripts d'infra
 docs/               documentation
 .claude/            agents, skills, hooks, permissions
 ```

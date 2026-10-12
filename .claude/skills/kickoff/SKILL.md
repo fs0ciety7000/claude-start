@@ -1,6 +1,6 @@
 ---
 name: kickoff
-description: Démarre un nouveau projet à partir du template Claude-start. À utiliser quand CLAUDE.md contient encore des {{…}}, ou quand l'utilisateur dit « nouveau projet », « on démarre », « kickoff ». Cadre le besoin, choisit la stack, remplit CLAUDE.md et docs/*, puis orchestre le squelette, le design system et l'infra.
+description: Démarre un nouveau projet à partir du template Claude-start. À utiliser quand CLAUDE.md contient encore des {{…}}, ou quand l'utilisateur dit « nouveau projet », « on démarre », « kickoff ». Cadre le besoin, fait choisir la stack par architect, remplit CLAUDE.md et docs/*, puis orchestre le squelette, le design system et l'infra.
 ---
 # Kickoff — nouveau projet
 
@@ -18,23 +18,32 @@ Demande uniquement ce que tu ne peux pas déduire :
 - Type : site vitrine / app web / API / CLI / autre.
 - Données : aucune, fichiers, Supabase/Postgres, API externe.
 - Direction artistique souhaitée (3 mots, références) — sinon le design-lead propose.
-Propose des défauts recommandés (stack web par défaut de CLAUDE.md, Coolify + Cloudflare).
+- **Projets liés** : un repo existant sert-il de référence (ex. même marque, même API) ?
+- Contraintes techniques éventuelles (langage imposé, perf, hébergement).
+Ne choisis pas la stack toi-même : c'est `architect` qui la recommande (étape 3).
 
-## 2. Socle (toi)
-1. Remplir `CLAUDE.md` (pitch, stack, commandes) et supprimer la note template.
-2. `docs/ARCHITECTURE.md` : vue d'ensemble, stack justifiée, contrat d'API initial.
-3. `docs/ROADMAP.md` : Session 0 + backlog v1 + décisions.
-4. Adapter `.claude/settings.json` (permissions des commandes réelles du projet) et
-   `.claude/hooks/session-start.sh` si la stack n'est pas Node/pnpm.
+## 2. Choix de stack (agent `architect`, en premier)
+Brief : besoin cadré + contraintes + projets liés. Il compare 2-3 stacks, en recommande une
+(justifiée), propose l'arborescence (périmètre de chaque agent) et le plan v1 en lots.
+Si le choix est structurant ou surprenant, le valider avec l'utilisateur en une question.
 
-## 3. Délégation parallèle (un seul message, plusieurs Agent)
-- `architect` → plan v1 en lots (attendre si la demande est structurante).
-- `design-lead` → `/design-system` : DESIGN.md complet + tokens + primitives + `/design`.
-- `backend` → squelette (types partagés, /api/health, config lint/test/check).
-- `devops` → Dockerfile, CI, DEPLOYMENT.md, `.env.example`.
+## 3. Socle (toi)
+0. Projets liés : `add_repo` en lecture, les noter dans CLAUDE.md et ARCHITECTURE §0.
+1. Remplir `CLAUDE.md` (pitch, stack retenue, projets liés, commandes install/dev/check/build)
+   et supprimer la note template.
+2. `docs/ARCHITECTURE.md` : vue d'ensemble, stack justifiée, arborescence, contrat initial.
+3. `docs/ROADMAP.md` : Session 0 + backlog v1 + décisions (stack, design, domaine).
+4. Adapter `.claude/settings.json` (permissions des commandes de la stack) et
+   `.claude/hooks/session-start.sh` si besoin.
+
+## 4. Délégation parallèle (un seul message, plusieurs Agent)
+- `design-lead` → `/design-system` (si UI) : direction propre au projet, DESIGN.md, tokens,
+  primitives, `/design`.
+- `backend` → squelette dans la stack retenue (types partagés, healthcheck, check/build).
+- `devops` → Dockerfile adapté à la stack, CI, DEPLOYMENT.md, `.env.example`.
 Puis `frontend` une fois tokens + contrat posés.
 
-## 4. Intégration et clôture
+## 5. Intégration et clôture
 `check` + `build` + `docker build` verts → `qa-reviewer` → `/ship`.
 Rends à l'utilisateur : ce qui existe, comment lancer, prochaines étapes, actions manuelles
 (DNS, Coolify, création du repo si nécessaire).

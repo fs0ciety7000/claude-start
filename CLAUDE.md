@@ -46,19 +46,32 @@ Besoin spécialisé récurrent (sécurité, data, SEO, mobile, contenu…) → c
 
 ## Stack
 
-{{Remplie par /kickoff. Défaut web : Next.js (App Router, standalone) + React + TypeScript
-strict + Tailwind v4 (tokens via @theme) + GSAP/Motion/Lenis + zod + Vitest + Biome + pnpm.}}
+{{Choisie au kickoff par l'agent `architect` selon le besoin, justifiée dans
+docs/ARCHITECTURE.md. Rien n'est imposé : Next.js, Go, Python, Rust, Astro, mobile…}}
+
+## Projets liés / références
+
+{{Repos ou sessions servant de référence (ex. `fs0ciety7000/<repo>` pour son design system,
+son API, son infra). Ajoutés à la session en lecture avec `add_repo`. « aucun » sinon.}}
 
 ## Commandes
 
+Quelle que soit la stack, le projet expose ces 4 commandes (via `package.json`, `Makefile`,
+`justfile`…) pour que le workflow et la CI restent identiques :
+
 ```bash
-{{pnpm install}}       # dépendances
-{{pnpm dev}}           # dev
-{{pnpm check}}         # lint + typecheck + tests — DOIT passer avant tout commit
-{{pnpm build}}         # build de prod
+{{install}}   # dépendances
+{{dev}}       # serveur / exécution locale
+{{check}}     # lint + typecheck + tests — DOIT passer avant tout commit
+{{build}}     # build de prod
 ```
 
 ## Règles
+
+- **Choix techniques et design par les experts** : `architect` choisit la stack (au kickoff ou
+  quand un besoin la remet en cause), `design-lead` la direction artistique ; chaque choix
+  est justifié et consigné dans ROADMAP › Décisions. Les défauts de ce template ne sont que
+  des suggestions.
 
 - **Langue** : docs et textes UI en français ; identifiants de code en anglais.
 - **Contrat d'abord** : toute évolution d'API passe par le fichier de types partagé +

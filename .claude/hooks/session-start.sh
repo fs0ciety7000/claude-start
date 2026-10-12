@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Démarrage de session : installe les dépendances (si projet Node) et rappelle le protocole.
+# Démarrage de session : installe les dépendances (Node, Go, Python, Rust) et rappelle le protocole.
 set -euo pipefail
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}"
 
@@ -11,6 +11,15 @@ if [ -f package.json ]; then
   elif [ -f bun.lockb ] && command -v bun >/dev/null 2>&1; then
     bun install >/dev/null 2>&1 || true
   fi
+fi
+if [ -f go.mod ] && command -v go >/dev/null 2>&1; then
+  go mod download >/dev/null 2>&1 || true
+fi
+if [ -f pyproject.toml ] && command -v uv >/dev/null 2>&1; then
+  uv sync >/dev/null 2>&1 || true
+fi
+if [ -f Cargo.toml ] && command -v cargo >/dev/null 2>&1; then
+  cargo fetch >/dev/null 2>&1 || true
 fi
 
 if grep -q '{{' CLAUDE.md 2>/dev/null; then
