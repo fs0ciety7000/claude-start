@@ -83,6 +83,7 @@
       "Bash(cargo:*)",
       "Bash(uv:*)",
       "Bash(make:*)",
+      "Bash", "mcp__github", "mcp__claude-code-remote", "TaskStop", "ToolSearch", "NotebookEdit",
       "mcp__github__get_file_contents",
       "mcp__github__list_branches",
       "mcp__github__list_commits",
