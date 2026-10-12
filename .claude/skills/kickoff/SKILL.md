@@ -12,7 +12,9 @@ Si présents, supprimer `.github/workflows/new-project.yml` et `.claude/skills/n
 
 ## 1. Cadrage (une seule salve de questions, via AskUserQuestion)
 Demande uniquement ce que tu ne peux pas déduire :
-- Pitch (quoi, pour qui), nom du projet, sous-domaine `*.fs0ciety.org`.
+- Pitch (quoi, pour qui), nom du projet.
+- **Domaine de déploiement** (toujours demander) : défaut proposé `<nom>.fs0ciety.org`,
+  mais l'utilisateur peut choisir un autre domaine (zone Cloudflare existante ou non).
 - Type : site vitrine / app web / API / CLI / autre.
 - Données : aucune, fichiers, Supabase/Postgres, API externe.
 - Direction artistique souhaitée (3 mots, références) — sinon le design-lead propose.

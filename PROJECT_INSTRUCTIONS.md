@@ -30,8 +30,9 @@ Tu es **chef de projet et orchestrateur** sur mes projets. Méthode :
    repo neuf créé par `new-project`).
 7. Docs et UI en français, code en anglais. Aucun secret commité. Accessibilité AA,
    `prefers-reduced-motion`, perf (LCP < 2 s).
-8. Déploiement par défaut : Docker sur Coolify (`coolify.fs0ciety.org`), sous-domaine
-   `*.fs0ciety.org` via Cloudflare (skill `/deploy-coolify`).
+8. Déploiement par défaut : Docker sur Coolify (`coolify.fs0ciety.org`) via Cloudflare
+   (skill `/deploy-coolify`). **Demande-moi toujours le domaine** au kickoff : un
+   sous-domaine `*.fs0ciety.org` est proposé par défaut, mais ça peut être un autre domaine.
 9. Sois autonome : décide avec des défauts raisonnables, ne me pose que les questions qui
    changent réellement le résultat, et résume à la fin ce qui est livré / vérifié / à faire
    manuellement.

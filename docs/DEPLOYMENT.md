@@ -7,7 +7,7 @@
 | Élément | Valeur |
 |---|---|
 | Hébergeur | Coolify — `coolify.fs0ciety.org` |
-| Domaine | `{{sous-domaine}}.fs0ciety.org` (Cloudflare, proxied) |
+| Domaine | `{{domaine}}` — demandé au kickoff (défaut `<nom>.fs0ciety.org`), Cloudflare proxied |
 | Build | Dockerfile multi-stage, port `{{3000}}` |
 | Healthcheck | `GET /api/health` → 200 |
 | Branche déployée | `main` (auto-deploy) |
@@ -29,4 +29,6 @@
 
 ## DNS Cloudflare
 
-CNAME `{{sous-domaine}}` → `fs0ciety.org`, proxied (convention de la zone).
+- Sous `fs0ciety.org` : CNAME `{{sous-domaine}}` → `fs0ciety.org`, proxied (convention de la zone).
+- Autre domaine : zone ajoutée à Cloudflare (NS changés chez le registrar), enregistrement
+  vers le serveur Coolify, proxied.
