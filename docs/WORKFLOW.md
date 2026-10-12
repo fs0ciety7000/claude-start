@@ -13,10 +13,14 @@ délègue aux agents experts, intègre et vérifie. Elle n'écrit elle-même que
 
 ## 2. Cadrage (orchestrateur)
 
-- **Références** : si la demande touche un projet lié (§0 d'ARCHITECTURE, ou cité par
-  l'utilisateur), l'ajouter à la session en lecture (`add_repo`) et le donner en contexte
-  aux agents concernés (design, contrat, infra à réutiliser). Une session précédente peut
-  aussi servir de référence (`list_sessions` / `list_events`).
+- **Projets liés** (§0 d'ARCHITECTURE, ou cités par l'utilisateur) : les ajouter à la
+  session (`add_repo` ; accès `push` si mode « mise à jour »), lire **leur** CLAUDE.md, et
+  les donner en contexte aux agents concernés. Une session précédente peut aussi servir de
+  référence (`list_sessions` / `list_events`).
+- **Changements inter-repos** (mode « mise à jour ») : un lot dédié par repo externe, confié
+  à l'agent compétent avec les règles de ce repo ; branche dédiée + PR (jamais de push sur
+  sa branche déployée), lien croisé entre les PR. Livrer d'abord le nouveau projet, puis
+  les mises à jour qui pointent vers lui (pas de lien vers un site pas encore en ligne).
 
 - Mettre à jour le **contrat** (types partagés + section API de `docs/ARCHITECTURE.md`)
   avant toute délégation : c'est l'interface entre agents.

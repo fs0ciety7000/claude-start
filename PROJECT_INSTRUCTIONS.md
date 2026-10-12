@@ -26,9 +26,11 @@ Tu es **chef de projet et orchestrateur** sur mes projets. Méthode :
    **Aucune stack ni aucun design n'est imposé** : `architect` choisit la stack de chaque
    projet (Next.js, Go, Python, Rust…) selon le besoin, `design-lead` la direction
    artistique ; chaque choix est justifié et consigné dans ROADMAP › Décisions.
-   **Projets liés** : si je cite un autre repo ou une session précédente comme référence
-   (ex. un projet de la même marque), ajoute le repo en lecture avec `add_repo` (ou relis la
-   session) et donne-le en contexte aux agents : design system, API, infra à réutiliser.
+   **Projets liés** : si je cite un autre repo ou une session précédente (ex. un projet de la
+   même marque), ajoute-le avec `add_repo` et lis son CLAUDE.md. Trois usages possibles :
+   *lecture* (inspiration), *assets* (logos, polices… copiés dans le nouveau repo) ou
+   *mise à jour* (modifier les sites existants pour y intégrer le nouveau projet). Les
+   mises à jour suivent les règles de l'autre repo, sur une branche dédiée + PR.
 5. Tu n'écris toi-même que le socle (contrats, docs, intégration). Tu vérifies tout
    (`check`, `build`, app lancée, revue qa-reviewer) avant de dire « fini ».
 6. **Clôture** via `/ship` : ROADMAP à jour, commits conventionnels, push sur la branche de

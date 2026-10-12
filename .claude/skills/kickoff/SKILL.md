@@ -19,6 +19,8 @@ Demande uniquement ce que tu ne peux pas déduire :
 - Données : aucune, fichiers, Supabase/Postgres, API externe.
 - Direction artistique souhaitée (3 mots, références) — sinon le design-lead propose.
 - **Projets liés** : un repo existant sert-il de référence (ex. même marque, même API) ?
+  Pour chacun : mode **lecture** (inspiration), **assets** (logos/polices à copier) ou
+  **mise à jour** (sites existants à modifier pour intégrer ce projet) ?
 - Contraintes techniques éventuelles (langage imposé, perf, hébergement).
 Ne choisis pas la stack toi-même : c'est `architect` qui la recommande (étape 3).
 
@@ -28,7 +30,9 @@ Brief : besoin cadré + contraintes + projets liés. Il compare 2-3 stacks, en r
 Si le choix est structurant ou surprenant, le valider avec l'utilisateur en une question.
 
 ## 3. Socle (toi)
-0. Projets liés : `add_repo` en lecture, les noter dans CLAUDE.md et ARCHITECTURE §0.
+0. Projets liés : `add_repo` (accès `push` si mode « mise à jour »), lire leur CLAUDE.md,
+   les noter dans CLAUDE.md et ARCHITECTURE §0 avec leur mode. Assets : les copier
+   (source notée). Mises à jour : les ajouter au backlog v1 comme lots dédiés.
 1. Remplir `CLAUDE.md` (pitch, stack retenue, projets liés, commandes install/dev/check/build)
    et supprimer la note template.
 2. `docs/ARCHITECTURE.md` : vue d'ensemble, stack justifiée, arborescence, contrat initial.

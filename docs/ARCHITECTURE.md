@@ -7,9 +7,18 @@
 
 ## 0. Projets liés / références
 
-| Repo / session | Ce qu'on en reprend | Lien |
+| Repo / session | Mode | Ce qu'on en reprend / ce qu'on y modifie |
 |---|---|---|
-| {{fs0ciety7000/<repo>}} | {{design system / contrat d'API / infra / rien qu'en lecture}} | |
+| {{fs0ciety7000/<repo>}} | {{lecture / assets / mise à jour}} | {{ex. logos copiés dans static/brand ; ajout du projet au catalogue apps}} |
+
+Modes :
+- **lecture** : inspiration ou conventions (design, API, infra), rien n'est copié.
+- **assets** : on **copie** des fichiers (logos, polices, images) dans ce repo, avec leur
+  source notée ici ; jamais de lien direct vers un fichier d'un autre repo.
+- **mise à jour** : ce projet impose des changements dans l'autre repo (ex. le référencer
+  sur un site existant). Ces changements suivent les règles **de l'autre repo** (son
+  CLAUDE.md, ses branches, ses revues), sur une branche dédiée + PR, jamais de push direct
+  sur sa branche déployée.
 
 ## 1. Vue d'ensemble
 

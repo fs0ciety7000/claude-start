@@ -51,8 +51,10 @@ docs/ARCHITECTURE.md. Rien n'est imposé : Next.js, Go, Python, Rust, Astro, mob
 
 ## Projets liés / références
 
-{{Repos ou sessions servant de référence (ex. `fs0ciety7000/<repo>` pour son design system,
-son API, son infra). Ajoutés à la session en lecture avec `add_repo`. « aucun » sinon.}}
+{{Repos ou sessions liés, avec leur mode (détail : ARCHITECTURE §0) :
+lecture (inspiration), assets (logos/polices copiés ici), mise à jour (sites existants à
+modifier pour intégrer ce projet — branche + PR, selon les règles de l'autre repo).
+« aucun » sinon.}}
 
 ## Commandes
 
